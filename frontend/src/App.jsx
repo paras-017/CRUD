@@ -47,6 +47,7 @@ function App() {
     const res = await axios.put(`http://localhost:3000/${updateForm._id}`,{title, description})
     //update Notes
     const newNotes = [...notes]
+    
     //finding index of update note
     const noteIndex = notes.findIndex(note=>{
       return note._id === updateForm._id
