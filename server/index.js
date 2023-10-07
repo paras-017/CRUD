@@ -14,7 +14,7 @@ app.post('/', createNote)
 app.get('/', fetchAllNotes)
 app.get('/:id', fetchNotesbyId)
 app.put('/:id', updateNote)
-app.delete('/', deleteNote)
+app.delete('/:id', deleteNote)
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)

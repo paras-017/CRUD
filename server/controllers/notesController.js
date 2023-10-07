@@ -27,7 +27,9 @@ const updateNote = async(req,res)=>{
 
 }
 const deleteNote = async(req,res)=>{
-
+    const noteId = req.params.id
+    const note = await Note.findByIdAndDelete(noteId)
+    res.json(note)
 }
 
 module.exports = {fetchAllNotes, fetchNotesbyId, createNote, updateNote, deleteNote}
