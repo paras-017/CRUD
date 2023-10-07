@@ -6,10 +6,16 @@ import './App.css'
 
 function App() {
   const [notes, setNotes] = useState(null)
-  const fetchAllNotes = async ()=>{
-    
+  const fetchAllNotes = async ()=>{ 
    const res = await axios.get('http://localhost:3000')
    setNotes(res.data.notes)
+  }
+  const deleteNote = async (_id)=>{
+    const note = await axios.delete(`http://localhost:3000/${_id}`)
+    const newNote = [...notes].filter(note=>{
+      return note._id != _id
+    })
+    setNotes(newNote)
   }
   useEffect(() => {
     fetchAllNotes()
