@@ -6,6 +6,7 @@ import './App.css'
 
 function App() {
   const [notes, setNotes] = useState(null)
+  const [createForm, setCreateForm] = useState({title:"", description:""})
   const fetchAllNotes = async ()=>{ 
    const res = await axios.get('http://localhost:3000')
    setNotes(res.data.notes)
@@ -16,6 +17,21 @@ function App() {
       return note._id != _id
     })
     setNotes(newNote)
+  }
+  const updateCreateFormField = (e) =>{
+    const {name,value} = e.target
+    setCreateForm({
+      ...createForm,
+      [name]:value
+    })
+  }
+  const createNote = async (e)=>{
+    e.preventDefault()
+    //create a note
+   const res = await axios.post('http://localhost:3000/', createForm)
+   console.log(res)
+   setNotes([...notes, res.data.note])
+   setCreateForm({title:"", description:""})
   }
   useEffect(() => {
     fetchAllNotes()
@@ -35,6 +51,17 @@ function App() {
       </div>
     )
    })}
+
+
+   {/* Create a note Form */}
+   <div>
+    <h1>Create a Note Form</h1>
+    <form onSubmit={createNote}>
+      <input type="text" name='title' value={createForm.title} onChange={updateCreateFormField}/>
+      <textarea type="text" name='description' value={createForm.description} onChange={updateCreateFormField}/>
+      <button type='submit'>Submit</button>
+    </form>
+   </div>
    </>
   )
 }
