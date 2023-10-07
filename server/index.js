@@ -13,7 +13,7 @@ connectToDb()
 app.post('/', createNote)
 app.get('/', fetchAllNotes)
 app.get('/:id', fetchNotesbyId)
-app.put('/', updateNote)
+app.put('/:id', updateNote)
 app.delete('/', deleteNote)
 
 app.listen(port, () => {

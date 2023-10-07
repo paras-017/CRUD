@@ -18,6 +18,12 @@ const createNote = async(req,res)=>{
     res.json({note})
 }
 const updateNote = async(req,res)=>{
+    // getData to update with
+     const {title,description} = req.body
+    //get the data
+    const noteId = req.params.id
+    const note = await Note.findByIdAndUpdate(noteId, {title,description}, {new : true})
+    res.json({note})
 
 }
 const deleteNote = async(req,res)=>{
