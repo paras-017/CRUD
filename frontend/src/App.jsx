@@ -41,13 +41,14 @@ function App() {
    setNotes([...notes, res.data.note])
    setCreateForm({title:"", description:""})
   }
+  
   const updateNote = async (e)=>{
     e.preventDefault()
     const {title, description} = updateForm
     const res = await axios.put(`http://localhost:3000/${updateForm._id}`,{title, description})
     //update Notes
     const newNotes = [...notes]
-    
+
     //finding index of update note
     const noteIndex = notes.findIndex(note=>{
       return note._id === updateForm._id
