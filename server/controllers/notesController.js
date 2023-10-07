@@ -1,5 +1,7 @@
-const fetchAllNotes = async(req,res)=>{
+const Note = require("../models/note")
 
+const fetchAllNotes = async(req,res)=>{
+ 
 }
 const fetchNotesbyId = async(req,res)=>{
 
