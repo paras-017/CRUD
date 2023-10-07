@@ -12,6 +12,8 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 connectToDb()
+
+
 app.post('/', createNote)
 app.get('/', fetchAllNotes)
 app.get('/:id', fetchNotesbyId)

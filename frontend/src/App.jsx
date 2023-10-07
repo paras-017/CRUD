@@ -8,6 +8,7 @@ function App() {
   const [notes, setNotes] = useState(null)
   const [createForm, setCreateForm] = useState({title:"", description:""})
   const [updateForm, setUpdateForm] = useState({_id:null,title:"", description:""})
+  
   const fetchAllNotes = async ()=>{ 
    const res = await axios.get('http://localhost:3000')
    setNotes(res.data.notes)
@@ -41,7 +42,7 @@ function App() {
    setNotes([...notes, res.data.note])
    setCreateForm({title:"", description:""})
   }
-  
+
   const updateNote = async (e)=>{
     e.preventDefault()
     const {title, description} = updateForm
