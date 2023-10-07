@@ -8,7 +8,9 @@ const fetchAllNotes = async(req,res)=>{
 const fetchNotesbyId = async(req,res)=>{
   const noteId = req.params.id
   console.log(noteId)
-
+  const note = await Note.findById(noteId)
+  if(!note) res.send("note not found")
+  res.json({note})
 }
 const createNote = async(req,res)=>{
     const {title, description} = req.body
