@@ -6,10 +6,14 @@ const fetchAllNotes = async(req,res)=>{
 }
 
 const fetchNotesbyId = async(req,res)=>{
-  
+  const noteId = req.params.id
+  console.log(noteId)
+
 }
 const createNote = async(req,res)=>{
-
+    const {title, description} = req.body
+    const note = await Note.create({title, description})
+    res.json({note})
 }
 const updateNote = async(req,res)=>{
 

@@ -8,11 +8,11 @@ const connectToDb = require('./database/mongoDbconnect')
 const router = express.Router()
 const app = express()
 const port = process.env.PORT || 8000
-
+app.use(express.json());
 connectToDb()
 app.post('/', createNote)
 app.get('/', fetchAllNotes)
-app.get('/id', fetchNotesbyId)
+app.get('/:id', fetchNotesbyId)
 app.put('/', updateNote)
 app.delete('/', deleteNote)
 
