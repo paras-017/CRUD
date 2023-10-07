@@ -12,11 +12,13 @@ const fetchNotesbyId = async(req,res)=>{
   if(!note) res.send("note not found")
   res.json({note})
 }
+
 const createNote = async(req,res)=>{
     const {title, description} = req.body
     const note = await Note.create({title, description})
     res.json({note})
 }
+
 const updateNote = async(req,res)=>{
     // getData to update with
      const {title,description} = req.body
@@ -26,6 +28,7 @@ const updateNote = async(req,res)=>{
     res.json({note})
 
 }
+
 const deleteNote = async(req,res)=>{
     const noteId = req.params.id
     const note = await Note.findByIdAndDelete(noteId)
